@@ -141,6 +141,7 @@ def annotate_heatmap(im, data=None, valfmt="{x:.2f}",
 
     return texts
 
+
 fig, ax = plt.subplots(1, figsize=(11, 6))
 
 im, cbar = heatmap(f1_score, classes, architectures, ax=ax,
@@ -148,36 +149,6 @@ im, cbar = heatmap(f1_score, classes, architectures, ax=ax,
 texts = annotate_heatmap(im, valfmt="{x:.2f}", size=9)
 
 fig.tight_layout()
-
-
-
-
-"""
-fig, ax = plt.subplots()
-im = ax.imshow(f1_score)
-
-# We want to show all ticks...
-ax.set_xticks(np.arange(len(architectures)))
-ax.set_yticks(np.arange(len(classes)))
-# ... and label them with the respective list entries
-ax.set_xticklabels(architectures)
-ax.set_yticklabels(classes)
-
-# Rotate the tick labels and set their alignment.
-plt.setp(ax.get_xticklabels(), rotation=45, ha="right",
-         rotation_mode="anchor")
-
-# Loop over data dimensions and create text annotations.
-for i in range(len(classes)):
-    for j in range(len(architectures)):
-        text = ax.text(j, i, f1_score[i, j],
-                       ha="center", va="center", color="w")
-
-ax.set_title("F1 Score")
-fig.tight_layout()
-
-"""
-
 
 # Save the figure
 fig.savefig('F1_Score_Heatmap.png', bbox_inches='tight')
